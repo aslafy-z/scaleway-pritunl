@@ -24,7 +24,15 @@ RUN  \
 # Fix pritunl package inconsistency
 RUN chmod 644 /etc/systemd/system/pritunl.service
 
-# Enable services
+# Tweek system limits
+# from https://docs.pritunl.com/docs/configuration-5#section-increase-open-file-limit
+RUN \
+  echo "* hard nofile 64000" >> /etc/security/limits.conf \
+  && echo "* soft nofile 64000" >> /etc/security/limits.conf \
+  && echo "root hard nofile 64000" >> /etc/security/limits.conf \
+  && echo "root soft nofile 64000" >> /etc/security/limits.conf
+
+# Enable autostart of services
 RUN systemctl enable pritunl mongod
 
 # Copy files
