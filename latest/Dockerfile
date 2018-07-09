@@ -1,7 +1,7 @@
 ## -*- docker-image-name: "scaleway/pritunl:latest" -*-
-ARG DOCKER_ARCH
+ARG SCW_ARCH
 
-FROM scaleway/ubuntu:${DOCKER_ARCH}-xenial
+FROM scaleway/ubuntu:${SCW_ARCH}-xenial
 
 MAINTAINER Scaleway <opensource@scaleway.com> (@scaleway)
 
